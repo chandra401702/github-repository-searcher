@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repository Searcher</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #0b1120;
+            color: #e5e7eb;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            border-bottom: 1px solid #263247;
+            background: #101827;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .status {
+            background: #123d30;
+            color: #69e5aa;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 85px 24px 55px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: #8da8ff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 62px);
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 22px;
+        }
+
+        .highlight {
+            color: #8da8ff;
+        }
+
+        .description {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #aab7ca;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 32px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 22px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
+            background: #6685ff;
+            color: white;
+        }
+
+        .secondary {
+            background: #182337;
+            color: white;
+            border: 1px solid #34425a;
+        }
+
+        .cards {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 15px 24px 70px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #111c2e;
+            border: 1px solid #26364e;
+            border-radius: 14px;
+            padding: 27px;
+        }
+
+        .icon {
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .card p {
+            color: #9eacc1;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #263247;
+            color: #8190a7;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #9aafff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                padding: 20px;
+                gap: 12px;
+            }
+
+            .brand {
+                font-size: 16px;
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="brand">⌘ GitHub Repository Searcher</div>
+        <div class="status">● API Service Live</div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="eyebrow">Spring Boot REST API Project</div>
+
+            <h1>
+                Discover. Search.<br>
+                <span class="highlight">Explore Repositories.</span>
+            </h1>
+
+            <p class="description">
+                Search GitHub repositories, save repository information
+                in PostgreSQL, and retrieve results using powerful
+                filtering and sorting capabilities.
+            </p>
+
+            <div class="actions">
+                <a class="button primary"
+                   href="/swagger-ui/index.html">
+                    Explore API Documentation →
+                </a>
+
+                <a class="button secondary"
+                   href="https://github.com/chandra401702/github-repository-searcher"
+                   target="_blank" rel="noopener noreferrer">
+                    View Source Code ↗
+                </a>
+            </div>
+        </section>
+
+        <section class="cards">
+            <article class="card">
+                <div class="icon">⌕</div>
+                <h2>GitHub Repository Search</h2>
+                <p>
+                    Search public GitHub repositories and retrieve
+                    useful repository information through REST APIs.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="icon">▤</div>
+                <h2>Persistent Storage</h2>
+                <p>
+                    Store repository information in PostgreSQL
+                    and retrieve previously saved results.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="icon">⚙</div>
+                <h2>Filtering &amp; Sorting</h2>
+                <p>
+                    Explore saved repositories using supported filters
+                    and sorting options.
+                </p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        Built with Spring Boot and PostgreSQL ·
+        <a href="/api/github/repositories">Explore Repository API</a>
+    </footer>
+
+</body>
+</html>
