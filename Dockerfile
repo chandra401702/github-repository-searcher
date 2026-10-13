@@ -1,7 +1,9 @@
+
 FROM maven:3.10.0-eclipse-temurin-25 AS build
 
 WORKDIR /app
 
+COPY settings.xml /root/.m2/settings.xml
 COPY pom.xml .
 COPY src ./src
 
