@@ -1,14 +1,18 @@
-FROM eclipse-temurin:25-jdk
+FROM maven:3.10.0-eclipse-temurin-25 AS build
 
 WORKDIR /app
 
-COPY .mvn/ .mvn/
-COPY mvnw pom.xml ./
+COPY pom.xml .
 COPY src ./src
 
-RUN chmod +x mvnw
-RUN ./mvnw -DskipTests package
+RUN mvn -B -DskipTests package
+
+FROM eclipse-temurin:25-jre
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar target/*.jar"]
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
